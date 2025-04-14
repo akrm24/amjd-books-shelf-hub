@@ -33,7 +33,7 @@ const BookCard: React.FC<BookCardProps> = ({
     if (!currentUser) {
       toast({
         title: "يجب تسجيل الدخول أولاً",
-        description: "قم بتسجيل الدخول أو إنشاء حساب للشراء",
+        description: "قم بتسجيل الدخول أو إنشاء حساج للشراء",
         variant: "destructive",
       });
       navigate('/login');
@@ -60,13 +60,13 @@ const BookCard: React.FC<BookCardProps> = ({
       return;
     }
 
-    // Create WhatsApp message
+    // Create WhatsApp message with specific phone number
     const message = encodeURIComponent(
       `مرحبًا AMJD، أرغب في شراء كتاب: ${title}\nاسمي: ${currentUser.displayName || 'مستخدم جديد'}\nبريدي الإلكتروني: ${currentUser.email}\nالسعر: ${price} ريال`
     );
     
-    // Open WhatsApp link
-    window.open(`https://wa.me/+966000000000?text=${message}`, '_blank');
+    // Open WhatsApp link with specific number
+    window.open(`https://wa.me/+966781086990?text=${message}`, '_blank');
     
     toast({
       title: "تم حفظ طلبك بنجاح!",
