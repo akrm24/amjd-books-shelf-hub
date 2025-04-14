@@ -1,0 +1,161 @@
+
+import { Book } from '@/components/BookGrid';
+
+// Sample book covers using placeholder URLs
+const bookCovers = [
+  'https://img.freepik.com/free-psd/book-cover-mockup_125540-572.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-psd/book-hardcover-mockup_125540-225.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-vector/abstract-elegant-winter-book-cover_23-2148798745.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-vector/gradient-abstract-book-cover-template_23-2149493625.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-vector/geometric-science-education-book-cover_23-2148493533.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-psd/book-cover-mockup_125540-572.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-vector/abstract-colorful-book-cover-template_23-2148804714.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-vector/colorful-book-cover-design-template_23-2148978276.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-vector/abstract-colorful-book-cover-template_23-2148804714.jpg?size=626&ext=jpg',
+];
+
+const generateBookId = () => `book_${Math.random().toString(36).substring(2, 9)}`;
+
+// Featured books for the homepage
+export const featuredBooks: Book[] = [
+  {
+    id: generateBookId(),
+    title: 'قوة العادات',
+    author: 'تشارلز دويج',
+    cover: bookCovers[0],
+    price: 75,
+    category: 'تطوير الذات',
+    description: 'يكشف كتاب قوة العادات كيف تؤثر العادات بشكل كبير على حياتنا، وكيف يمكننا تغييرها لتحسين شخصيتنا وإنتاجيتنا.',
+  },
+  {
+    id: generateBookId(),
+    title: 'البداية والنهاية',
+    author: 'ابن كثير',
+    cover: bookCovers[1],
+    price: 120,
+    category: 'دينية',
+    description: 'كتاب تاريخي إسلامي يسرد قصة الخلق منذ البداية وحتى نهاية العالم وفق التصور الإسلامي.',
+  },
+  {
+    id: generateBookId(),
+    title: 'هيمنة التكنولوجيا',
+    author: 'مارتن ديفيس',
+    cover: bookCovers[2],
+    price: 89,
+    category: 'تقنية',
+    description: 'يناقش كيف أصبحت التكنولوجيا جزءًا لا يتجزأ من حياتنا اليومية وتأثيرها على المجتمع والاقتصاد.',
+  },
+  {
+    id: generateBookId(),
+    title: 'العقل والوجود',
+    author: 'عبدالله العروي',
+    cover: bookCovers[3],
+    price: 65,
+    category: 'فلسفة',
+    description: 'يتناول أهم القضايا الفلسفية المتعلقة بالعقل والوجود والمعرفة في سياق فكري معاصر.',
+  },
+];
+
+// All books for the library page
+export const allBooks: Book[] = [
+  ...featuredBooks,
+  {
+    id: generateBookId(),
+    title: 'فن اللامبالاة',
+    author: 'مارك مانسون',
+    cover: bookCovers[4],
+    price: 60,
+    category: 'تطوير الذات',
+    description: 'كيف تعيش حياة سعيدة بدون الاهتمام بالأمور التافهة وتركيز طاقتك على ما يهم حقًا.',
+  },
+  {
+    id: generateBookId(),
+    title: 'رحلة إلى الشرق',
+    author: 'هيرمان هيسه',
+    cover: bookCovers[5],
+    price: 55,
+    category: 'روايات',
+    description: 'رواية فلسفية عن رحلة روحانية لمجموعة من الرجال يسعون للحكمة والمعرفة في الشرق.',
+  },
+  {
+    id: generateBookId(),
+    title: 'التاريخ الإسلامي',
+    author: 'محمود شاكر',
+    cover: bookCovers[6],
+    price: 130,
+    category: 'تاريخ',
+    description: 'موسوعة شاملة للتاريخ الإسلامي منذ عهد الرسول وحتى العصر الحديث.',
+  },
+  {
+    id: generateBookId(),
+    title: 'العلم في منظور جديد',
+    author: 'روجر بينروز',
+    cover: bookCovers[7],
+    price: 95,
+    category: 'علوم',
+    description: 'يقدم نظرة معاصرة للعلم ودوره في فهمنا للكون والطبيعة والحياة.',
+  },
+  {
+    id: generateBookId(),
+    title: 'ذاكرة الجسد',
+    author: 'أحلام مستغانمي',
+    cover: bookCovers[8],
+    price: 70,
+    category: 'روايات',
+    description: 'رواية عربية شهيرة تتناول قصة حب وطن وإنسان في سياق تاريخي وسياسي معقد.',
+  },
+  {
+    id: generateBookId(),
+    title: 'الذكاء العاطفي',
+    author: 'دانيال جولمان',
+    cover: bookCovers[0],
+    price: 85,
+    category: 'تطوير الذات',
+    description: 'كيف يمكن للذكاء العاطفي أن يكون أكثر أهمية من الذكاء التقليدي في تحقيق النجاح.',
+  },
+  {
+    id: generateBookId(),
+    title: 'فن الحرب',
+    author: 'سون تزو',
+    cover: bookCovers[1],
+    price: 50,
+    category: 'أعمال',
+    description: 'كتاب عسكري قديم يتضمن استراتيجيات أصبحت مبادئ أساسية في إدارة الأعمال والحياة.',
+  },
+  {
+    id: generateBookId(),
+    title: 'تاريخ الفلسفة الغربية',
+    author: 'برتراند راسل',
+    cover: bookCovers[2],
+    price: 110,
+    category: 'فلسفة',
+    description: 'عرض شامل لتاريخ الفكر الفلسفي الغربي منذ اليونان القديمة وحتى العصر الحديث.',
+  },
+  {
+    id: generateBookId(),
+    title: 'برمجة البايثون للمبتدئين',
+    author: 'أحمد خالد',
+    cover: bookCovers[3],
+    price: 90,
+    category: 'تقنية',
+    description: 'دليل شامل ومبسط لتعلم لغة البرمجة بايثون من الصفر وحتى الاحتراف.',
+  },
+  {
+    id: generateBookId(),
+    title: 'القيادة الفعالة',
+    author: 'ستيفن كوفي',
+    cover: bookCovers[4],
+    price: 80,
+    category: 'أعمال',
+    description: 'مبادئ وممارسات القيادة التي تحقق نتائج استثنائية في الشركات والمؤسسات.',
+  },
+  {
+    id: generateBookId(),
+    title: 'رحلتي مع القرآن',
+    author: 'مصطفى محمود',
+    cover: bookCovers[5],
+    price: 65,
+    category: 'دينية',
+    description: 'تأملات علمية وفلسفية في القرآن الكريم من منظور معاصر.',
+  },
+];
