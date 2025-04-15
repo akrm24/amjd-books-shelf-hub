@@ -66,7 +66,7 @@ const BookCard: React.FC<BookCardProps> = ({
     );
     
     // Open WhatsApp link with specific number
-    window.open(`https://wa.me/+966781086990?text=${message}`, '_blank');
+    window.open(`https://wa.me/+967781086990?text=${message}`, '_blank');
     
     toast({
       title: "تم حفظ طلبك بنجاح!",
@@ -107,3 +107,4 @@ const BookCard: React.FC<BookCardProps> = ({
 };
 
 export default BookCard;
+
