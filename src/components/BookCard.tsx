@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import { saveBookPurchase } from '@/lib/firebase';
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from 'react-router-dom';
 
 interface BookCardProps {
@@ -49,29 +49,37 @@ const BookCard: React.FC<BookCardProps> = ({
       category,
     };
 
-    const result = await saveBookPurchase(currentUser.uid, bookData);
-    
-    if (result.error) {
+    try {
+      // Try to save purchase, but don't block WhatsApp redirect if it fails
+      saveBookPurchase(currentUser.uid, bookData).then(result => {
+        if (result.error) {
+          console.log("لم نتمكن من حفظ الطلب:", result.error);
+        }
+      });
+
+      // Create WhatsApp message with specific phone number
+      const message = encodeURIComponent(
+        `مرحبًا AMJD، أرغب في شراء كتاب: ${title}\nاسمي: ${currentUser.displayName || 'مستخدم جديد'}\nبريدي الإلكتروني: ${currentUser.email}\nالسعر: ${price} ريال`
+      );
+      
+      // Use a direct link format that works better on more devices
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=967781086990&text=${message}`;
+      
+      // Open in new tab
+      window.open(whatsappUrl, '_blank');
+      
       toast({
-        title: "خطأ في عملية الشراء",
-        description: result.error,
+        title: "تم توجيهك إلى واتساب",
+        description: "يتم توجيهك إلى واتساب لإتمام عملية الشراء",
+      });
+    } catch (error) {
+      console.error("خطأ في عملية الشراء:", error);
+      toast({
+        title: "حدث خطأ",
+        description: "لم نتمكن من إكمال عملية الشراء، يرجى المحاولة مرة أخرى",
         variant: "destructive",
       });
-      return;
     }
-
-    // Create WhatsApp message with specific phone number
-    const message = encodeURIComponent(
-      `مرحبًا AMJD، أرغب في شراء كتاب: ${title}\nاسمي: ${currentUser.displayName || 'مستخدم جديد'}\nبريدي الإلكتروني: ${currentUser.email}\nالسعر: ${price} ريال`
-    );
-    
-    // Open WhatsApp link with specific number
-    window.open(`https://wa.me/+967781086990?text=${message}`, '_blank');
-    
-    toast({
-      title: "تم حفظ طلبك بنجاح!",
-      description: "تم توجيهك إلى واتساب لإتمام عملية الدفع",
-    });
   };
 
   return (
@@ -107,4 +115,3 @@ const BookCard: React.FC<BookCardProps> = ({
 };
 
 export default BookCard;
-
